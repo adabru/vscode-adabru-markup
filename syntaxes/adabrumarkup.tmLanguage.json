@@ -1,0 +1,153 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Adabru Markup",
+  "scopeName": "source.adabrumarkup",
+  "fileTypes": ["abm"],
+  "patterns": [{
+          "name": "toc",
+          "match": "\\[TOC\\]"
+      }, {
+          "match": "^(####)(.*)",
+          "captures": {
+              "1": {"name":"unimportant"},
+              "2": {"name":"heading.l4"}
+          }
+      }, {
+          "match": "^(###)(.*)",
+          "captures": {
+              "1": {"name":"unimportant"},
+              "2": {"name":"heading.l3"}
+          }
+      }, {
+          "match": "^(##)(.*)",
+          "captures": {
+              "1": {"name":"unimportant"},
+              "2": {"name":"heading.l2"}
+          }
+      }, {
+          "match": "^(#)(.*)",
+          "captures": {
+              "1": {"name":"unimportant"},
+              "2": {"name":"heading.l1"}
+          }
+      }, {
+          "match": "(└▪.*?)(↵)",
+          "captures": {
+              "1": {"name":"terminal"},
+              "2": {"name":"unimportant"}
+          }
+      }, {
+          "name": "table",
+          "match": "\\|"
+      }, {
+          "match": "(\\[).*?(\\]\\(\\(?)(.*?)(\\)\\)?)",
+          "captures": {
+              "1": {"name":"bracket"},
+              "2": {"name":"bracket"},
+              "3": {"name":"link"},
+              "4": {"name":"bracket"}
+          }
+      }, {
+          "name": "link",
+          "match": "<?[^ ]*://[^ ]*>?"
+      }, {
+          "match": "(')(.*?)(')",
+          "captures": {
+              "1": {"name":"unimportant"},
+              "2": {"name":"quoted"},
+              "3": {"name":"unimportant"}
+          }
+      }, {
+          "name": "quoted",
+          "match": "\".*?\""
+      }, {
+          "name": "comment",
+          "begin": "```",
+          "end": "```"
+      }, {
+          "name": "info",
+          "begin": "^ℹ( |$)",
+          "end": "^\n$"
+      }, {
+          "match": "(ℹ)(.*)",
+          "captures": {
+              "1": {"name":"unimportant"},
+              "2": {"name":"info"}
+          }
+      }, {
+          "name": "warn",
+          "begin": "⚠( |$)",
+          "end": "^\n$"
+      }, {
+          "match": "(⚠)(.*)",
+          "captures": {
+              "1": {"name":"unimportant"},
+              "2": {"name":"warn"}
+          }
+      }, {
+          "match": "^ *(- )",
+          "captures": {
+              "1": {"name":"listitem"}
+          }
+      }, {
+          "begin": "^(🌲)(.*)$",
+          "captures": {
+              "1": {"name":"unimportant"},
+              "2": {"name":"folder"}
+          },
+          "patterns": [ {
+              "match": "^ *([^ ]*)(/)( |$)",
+              "captures": {
+                "1": {"name":"folder"},
+                "2": {"name":"unimportant"}
+              }
+            }, {
+              "match": "^ *([^ ]*)",
+              "captures": {
+                "1": {"name":"file"}
+              }
+            }
+          ],
+          "end": "^\n$"
+      }, {
+          "match": "(↑)([^ ]*)(/)($| )",
+          "captures": {
+              "1": {"name":"unimportant"},
+              "2": {"name":"folder"},
+              "3": {"name":"unimportant"}
+          }
+      }, {
+          "match": "(↑)([^ ]*)",
+          "captures": {
+              "1": {"name":"unimportant"},
+              "2": {"name":"file"}
+          }
+      }, {
+          "name": "comment",
+          "match": "`.*?`"
+      }, {
+          "match": "(\\*\\*)(.*?)(\\*\\*)",
+          "captures": {
+              "1": {"name":"unimportant"},
+              "2": {"name":"bold"},
+              "3": {"name":"unimportant"}
+          }
+      }, {
+          "match": "(\\*)(.*?)(\\*)",
+          "captures": {
+              "1": {"name":"unimportant"},
+              "2": {"name":"emphasize"},
+              "3": {"name":"unimportant"}
+          }
+      }, {
+          "name": "time",
+          "match": "⏲[0-9:]*(s|m|h)?"
+      }, {
+          "match": "((⌨)[^ ⌨]*)",
+          "captures": {
+              "1": {"name":"keystroke"},
+              "2": {"name":"unimportant"}
+          }
+      }
+  ]
+}

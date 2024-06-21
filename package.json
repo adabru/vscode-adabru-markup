@@ -1,0 +1,26 @@
+{
+    "name": "vscode-adabru-markup",
+    "displayName": "vscode-adabru-markup",
+    "description": "Adabru Markup Language Support",
+    "version": "0.0.1",
+    "publisher": "adabru",
+    "engines": {
+        "vscode": "^1.26.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "adabrumarkup",
+            "aliases": ["Adabru Markup", "adabrumarkup"],
+            "extensions": [".abm"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "adabrumarkup",
+            "scopeName": "source.adabrumarkup",
+            "path": "./syntaxes/adabrumarkup.tmLanguage.json"
+        }]
+    }
+}
